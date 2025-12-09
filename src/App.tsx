@@ -1,4 +1,5 @@
 import { useEffect, useState, type CSSProperties } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import "./App.css";
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
     >
       <img src="/miles.png" alt="Miles" className="miles-image" />
       <img src="/spiderman.png" alt="Spiderman" className="spider-image" />
+      <Analytics />
     </div>
   );
 }
