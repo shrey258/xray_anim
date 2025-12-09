@@ -7,8 +7,7 @@ function App() {
   const [click, setClick] = useState(false);
 
   const handleClick = () => {
-    // Toggle the data attribute value
-    setClick(click === false ? true : false);
+    setClick(!click);
   };
 
   useEffect(() => {

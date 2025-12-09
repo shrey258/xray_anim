@@ -29,7 +29,7 @@
   --radius: 150px;
 
   clip-path: circle(var(--radius) at var(--mouse-x) var(--mouse-y));
-  transition: --radius 0.5s ease-in-out;
+  transition: --radius 0.7s cubic-bezier(0.77,0,0.18,1); 
 }
 
 .miles-image {
