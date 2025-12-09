@@ -1,36 +1,47 @@
-import { useEffect, useState, type CSSProperties } from 'react';
-import './App.css'
+import { useEffect, useState, type CSSProperties } from "react";
+import "./App.css";
 
 function App() {
   const [coords, setCoords] = useState({ x: 0, y: 0 });
+
+  const [click, setClick] = useState(false);
+
+  const handleClick = () => {
+    // Toggle the data attribute value
+    setClick(click === false ? true : false);
+  };
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
       setCoords({
         x: event.clientX,
-        y: event.clientY
+        y: event.clientY,
       });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
   const dynamicStyles = {
-    '--mouse-x': `${coords.x}px`,
-    '--mouse-y': `${coords.y}px`,
+    "--mouse-x": `${coords.x}px`,
+    "--mouse-y": `${coords.y}px`,
   } as CSSProperties;
 
   return (
-    <div className="image-container" style={dynamicStyles}>
+    <div
+      className="image-container"
+      style={dynamicStyles}
+      data-onClick={click}
+      onClick={handleClick}
+    >
       <img src="/miles.png" alt="Miles" className="miles-image" />
       <img src="/spiderman.png" alt="Spiderman" className="spider-image" />
-      
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
